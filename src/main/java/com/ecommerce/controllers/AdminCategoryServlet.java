@@ -52,16 +52,28 @@ public class AdminCategoryServlet extends HttpServlet {
         String action = request.getParameter("action");
 
         if ("add".equals(action)) {
+            String name = request.getParameter("name");
+            if (name == null || name.trim().isEmpty()) {
+                request.getSession().setAttribute("errorMessage", "Kategori adı boş bırakılamaz.");
+                response.sendRedirect(request.getContextPath() + "/admin/categories");
+                return;
+            }
             Category cat = new Category();
-            cat.setName(request.getParameter("name"));
+            cat.setName(name);
             cat.setDescription(request.getParameter("description"));
             cat.setActive(request.getParameter("isActive") != null);
             categoryDAO.addCategory(cat);
             
         } else if ("update".equals(action)) {
+            String name = request.getParameter("name");
+            if (name == null || name.trim().isEmpty()) {
+                request.getSession().setAttribute("errorMessage", "Kategori adı boş bırakılamaz.");
+                response.sendRedirect(request.getContextPath() + "/admin/categories");
+                return;
+            }
             Category cat = new Category();
             cat.setId(Integer.parseInt(request.getParameter("id")));
-            cat.setName(request.getParameter("name"));
+            cat.setName(name);
             cat.setDescription(request.getParameter("description"));
             cat.setActive(request.getParameter("isActive") != null);
             categoryDAO.updateCategory(cat);
