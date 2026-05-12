@@ -46,11 +46,16 @@ public class AdminDashboardServlet extends HttpServlet {
         int totalCategories = categoryDAO.getAllCategories().size();
         int totalOrders = orderDAO.getAllOrders().size();
         int totalUsers = userDAO.getAllUsers().size();
+        
+        int pendingOrders = (int) orderDAO.getAllOrders().stream()
+                                  .filter(o -> "Beklemede".equals(o.getStatus()))
+                                  .count();
 
         request.setAttribute("totalProducts", totalProducts);
         request.setAttribute("totalCategories", totalCategories);
         request.setAttribute("totalOrders", totalOrders);
         request.setAttribute("totalUsers", totalUsers);
+        request.setAttribute("pendingOrders", pendingOrders);
 
         request.getRequestDispatcher("/admin/dashboard.jsp").forward(request, response);
     }
