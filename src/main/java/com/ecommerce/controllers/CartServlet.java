@@ -53,7 +53,13 @@ public class CartServlet extends HttpServlet {
                 // Ürün sepette zaten varsa miktarını artır
                 for (CartItem item : cart) {
                     if (item.getProduct().getId() == productId) {
-                        item.setQuantity(item.getQuantity() + quantity);
+                        int newQuantity = item.getQuantity() + quantity;
+                        if (newQuantity <= product.getStock()) {
+                            item.setQuantity(newQuantity);
+                        } else {
+                            item.setQuantity(product.getStock()); // Sınırı aşarsa en fazla stok kadar ekle
+                            request.getSession().setAttribute("cartError", "Seçilen ürün için maksimum stok miktarına ulaşıldı.");
+                        }
                         exists = true;
                         break;
                     }
