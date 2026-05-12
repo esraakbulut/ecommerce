@@ -53,4 +53,4 @@ CREATE TABLE IF NOT EXISTS order_items (
 );
 
 -- Örnek Admin Kullanıcısı (Şifre: admin123, gerçek projelerde hashlenmeli)
--- INSERT INTO users (full_name, email, password, role) VALUES ('Sistem Yöneticisi', 'admin@ecommerce.com', 'admin123', 'admin');
+INSERT INTO users (full_name, email, password, role) VALUES ('Sistem Yöneticisi', 'admin@ecommerce.com', 'admin123', 'admin');
