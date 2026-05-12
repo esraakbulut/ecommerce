@@ -29,12 +29,28 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         
+        String fullName = request.getParameter("fullName");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
+
+        // Sunucu Tarafı Doğrulama (Server-side Validation)
+        if (fullName == null || fullName.trim().isEmpty() ||
+            email == null || email.trim().isEmpty() ||
+            password == null || password.trim().isEmpty()) {
+            
+            request.setAttribute("errorMessage", "Ad soyad, e-posta ve şifre alanları zorunludur.");
+            request.getRequestDispatcher("/register.jsp").forward(request, response);
+            return;
+        }
+        
         User user = new User();
-        user.setFullName(request.getParameter("fullName"));
-        user.setEmail(request.getParameter("email"));
-        user.setPassword(request.getParameter("password")); // Gerçek projelerde hashlenmeli
-        user.setPhone(request.getParameter("phone"));
-        user.setAddress(request.getParameter("address"));
+        user.setFullName(fullName);
+        user.setEmail(email);
+        user.setPassword(password); // Gerçek projelerde hashlenmeli
+        user.setPhone(phone);
+        user.setAddress(address);
 
         boolean isRegistered = userDAO.registerUser(user);
 
