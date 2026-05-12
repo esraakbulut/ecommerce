@@ -70,4 +70,4 @@ Uygulamada bir kullanıcının admin olabilmesi için veritabanından yetki veri
 4. Çıkış yapıp tekrar giriş yaptığınızda menüde **Admin Paneli** butonunu göreceksiniz!
 
 ---
-*Geliştirici Notu: Bu proje sıfırdan saf Java teknolojileri ile inşa edilmiştir. Sürükle-bırak veya hazır CMS sistemleri kullanılmamıştır.*
+
