@@ -42,6 +42,7 @@
                                     <img src="${product.imageUrl}" class="card-img-top p-3" alt="${product.name}" onerror="this.src='https://via.placeholder.com/400x300?text=Görsel+Yok'">
                                     <div class="card-body">
                                         <h6 class="card-title text-truncate" title="${product.name}">${product.name}</h6>
+                                        <p class="card-text text-muted small text-truncate" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; white-space: normal;" title="${product.description}">${product.description}</p>
                                         <p class="card-text fw-bold text-dark fs-5 mb-2">
                                             <fmt:formatNumber value="${product.price}" type="currency" currencySymbol="₺" maxFractionDigits="2"/>
                                         </p>
