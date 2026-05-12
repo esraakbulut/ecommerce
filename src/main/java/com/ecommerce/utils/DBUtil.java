@@ -9,7 +9,7 @@ public class DBUtil {
     // Veritabanı URL, Kullanıcı Adı ve Şifre (PostgreSQL)
     private static final String URL = "jdbc:postgresql://localhost:5432/ecommerce_db";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "admin"; // Burayı kendi PostgreSQL şifrenizle değiştirin
+    private static final String PASSWORD = "1234"; // Burayı kendi PostgreSQL şifrenizle değiştirin
     
     // JDBC Sürücüsü
     private static final String DRIVER = "org.postgresql.Driver";
