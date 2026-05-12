@@ -14,10 +14,12 @@ import java.io.IOException;
 public class ProductServlet extends HttpServlet {
 
     private ProductDAO productDAO;
+    private com.ecommerce.dao.CategoryDAO categoryDAO;
 
     @Override
     public void init() throws ServletException {
         productDAO = new ProductDAO();
+        categoryDAO = new com.ecommerce.dao.CategoryDAO();
     }
 
     @Override
@@ -29,7 +31,9 @@ public class ProductServlet extends HttpServlet {
             Product product = productDAO.getProductById(id);
             
             if (product != null) {
+                com.ecommerce.models.Category category = categoryDAO.getCategoryById(product.getCategoryId());
                 request.setAttribute("product", product);
+                request.setAttribute("category", category);
                 request.getRequestDispatcher("/product-detail.jsp").forward(request, response);
                 return;
             }
